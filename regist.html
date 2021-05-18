@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" cotent="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script src="java.js"></script>
+    <title>Login</title>
+  </head>
+  <body onLoad="now()">
+
+    <nav id="nav1">
+      <img class="logo" href="main.html" src="logo.png" width="75" height="75"></a>
+  </nav>
+
+      <div id="login-container" class="glowing-border">
+           <h1>Registro</h1>
+                <label for="name">Name</label> 
+                <input type="name" name="name" id="name" placeholder="Digite seu nome" autocomplete="off">
+               <label for="email">E-email</label> 
+               <input type="email" name="email" id="email" placeholder="Digite seu email" autocomplete="off">
+               <label for="password">Password</label> 
+               <input type="password" name="password" id="password" placeholder="Digite a sua password" >
+               <label for="passwordConfirmed">Confirmar Password</label> 
+               <input type="password" name="passwordConfirmed" id="passwordConfirmed" placeholder="Confirme a sua password" >
+               <label for="tipoConta">Tipo de conta</label> 
+               <input type="tipoConta" name="tipoConta" id="tipoConta" placeholder="Confirme tipo de conta">
+               <label for="Saldo">Saldo da Conta</label> 
+               <input id="Saldo" placeholder="Confirme o seu Saldo" onInput="numchecker()">
+               <input type="submit" onclick="CreateConta()" value="Registrar">
+          
+           <p>Já tem conta?</p>
+           <br>
+           <a href="index.html">Inicie Sessão</a>
+      </div>
+      
+  <footer>
+  <b id="footText2">DorinGo<br></b>
+  <a id="footText" >Made by Diogo Caetano & Gonçalo Sousa</a>
+</footer>
+  </body>
+</html>
