@@ -103,9 +103,26 @@ function numchecker()
 {
     let saldo = document.getElementById("Saldo").value;
 
-    if (isNaN(saldo))
+    if (isNaN(saldo ))
         document.getElementById("Saldo").value = formersal;
     formersal = document.getElementById("Saldo").value;
+}
+
+function load()
+{
+    formersal = null;
+}
+
+function numchecker1()
+{
+    let num = document.getElementById("actnum").value;
+
+    if (isNaN(num)|| num>50)
+    {
+        alert("Quantidade máxima de 50 unidades");
+        document.getElementById("actnum").value = formersal;
+    }
+    formersal = document.getElementById("actnum").value;
 }
 
 function checkLogin(response){

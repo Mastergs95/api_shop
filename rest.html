@@ -7,7 +7,7 @@
     <script src="java.js"></script>
     <title>Restaurante</title>
   </head>
-  <body>
+  <body onLoad="load()">
     <nav>
         <img class="logo" href="main.html" src="logo.png" width="75" height="75"></a>
         <a class="navText" href="main.html">Página Principal </a>
@@ -120,8 +120,16 @@
           <span class="close">&times;</span>
           <p>Adicionar quantidade do produto</p>
           <img id="qisk" src="lombinhos.png" alt="Prato de peixe" class="alimento" width=200 height=100 >
-          <button type="submit" class="btn">Login</button><br>
-          <button type="button" class="btn cancel">Close</button>
+          <br>
+          <div class="contentado">
+            
+            <input id="actnum" oninput="numchecker1()" placeholder="Insira a quantidade do produto"></input> 
+            
+          </div>
+          <br>
+          <button type="submit" class="btn">Confirmar</button>
+          <button type="button" class="btn cancel">Cancelar</button>
+          
         </div>
       
       </div>
