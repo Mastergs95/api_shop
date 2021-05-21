@@ -37,6 +37,8 @@ class AuthController extends Controller
             $plainPassword = $request->password;
             $user->saldo = $request->saldo;
             $user->password = app('hash')->make($plainPassword);
+            $user->pergunta = $request->pergunta;
+            $user->resposta = $request->resposta;
 
             $user->save();
 
