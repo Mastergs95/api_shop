@@ -24,6 +24,8 @@ class AuthController extends Controller
             'tipoConta' => 'required|string',
             'password' => 'required|confirmed',
             'saldo' => 'required',
+            'pergunta' => 'required|string',
+            'resposta' => 'required|string',
         ]);
 
         try {

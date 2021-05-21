@@ -91,7 +91,7 @@ function CreateConta(){
             name:name,
            email: email,
            password: password,
-           passwordConfirmed: passwordConfirmed,
+           password_confirmation: passwordConfirmed,
            tipoConta: tipoConta,
            saldo: saldo
        })

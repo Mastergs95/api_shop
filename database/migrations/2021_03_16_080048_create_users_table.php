@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('tipoConta');
             $table->string('password');
             $table->double('saldo');
+            $table->string('pergunta');
             $table->timestamps();
         }); 
     }
