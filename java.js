@@ -342,23 +342,12 @@ function querySaldo(){
 
 function addPoduct(){
 
-        let name = document.getElementById(onclick).value;
-
-        if (id>0 & id<5){
-            let price = document.getElementById(id).peixe;
-        }
-        if (id>6 & id<10){
-            let price = document.getElementById(id).carne;
-        }
-        if (id>11 & id<15){
-            let price = document.getElementById(id).sob;
-        }
+        let name = localStorage.getItem("name");
+        let preco = localStorage.getItem("preco");
+        console.log(name,preco);
         
     
-        console.log(name, price);
-        
-    
-       fetch('http://127.0.0.1:8000/api/createProduct', {
+       fetch('http://127.0.0.1:8000/api/buyProduct', {
            method: 'POST',
            headers: {
            'Accept': 'application/json',
@@ -366,7 +355,7 @@ function addPoduct(){
            },
            body: JSON.stringify({
             name:name,
-            price:price, 
+            preco:preco, 
            })
        }).then(response => response.json())
        .then((responseJson) => checkConta(responseJson));
