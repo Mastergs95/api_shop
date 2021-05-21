@@ -5,7 +5,7 @@
       <meta name="viewport" cotent="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
     <script src="java.js"></script>
-    <title>Login</title>
+    <title>Registrar</title>
   </head>
   <body onLoad="now()">
 
@@ -23,9 +23,19 @@
                <input type="password" name="password" id="password" placeholder="Digite a sua password" >
                <label for="passwordConfirmed">Confirmar Password</label> 
                <input type="password" name="passwordConfirmed" id="passwordConfirmed" placeholder="Confirme a sua password" >
+               <label for="perguntaSeguranca">Pergunta de Segurança</label>
+               <select>
+                 <optgroup label="Escolha sua pergunta de seguranca" id="pergunta">
+                   <option value="Qual o nome do seu primeiro animal de estimação?"></option>
+                   <option value="seguranca2">Qual o seu clube favorito?</option>
+                   <option value="seguranca3">Qual a sua comida favorita?</option>
+                   <option value="seguranca4"></option>
+                 </optgroup>
+               </select>
+               <input id="perguntaSeguranca" placeholder="Escreva sua resposta" id="resposta">
                <label for="tipoConta">Tipo de conta</label> 
 	       <select name="optionlist" type="tipoConta" id="tipoConta" placeholder="Confirme tipo de conta">
-		       <option>Cliente</option>
+		       <option>Client</option>
 		       <option>Vendor</option>
 		</select>
                <label for="Saldo">Saldo da Conta</label> 

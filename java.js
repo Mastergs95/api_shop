@@ -77,6 +77,8 @@ function CreateConta(){
     let passwordConfirmed = document.getElementById("passwordConfirmed").value;
     let tipoConta = document.getElementById("tipoConta").value;
     let saldo = document.getElementById("Saldo").value;
+    let pergunta = document.getElementById("pergunta").value;
+    let resposta = document.getElementById("perguntaSeguranca");
 
     console.log(name, email, passwordConfirmed, password, tipoConta,saldo);
     
@@ -93,7 +95,9 @@ function CreateConta(){
            password: password,
            password_confirmation: passwordConfirmed,
            tipoConta: tipoConta,
-           saldo: saldo
+           saldo: saldo,
+	   pergunta: pergunta,
+	   resposta: resposta
        })
    }).then(response => response.json())
    .then((responseJson) => checkConta(responseJson));
