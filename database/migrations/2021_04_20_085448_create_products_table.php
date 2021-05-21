@@ -15,15 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idSeller');
-            $table->foreign('idSeller')->references('id')->on('users');
             $table->string('name');
             $table->double('price', 8, 2);
-            $table->string('description');
-            $table->bigInteger('stock');
-            $table->timestamps();
+            
         });
     }
+
+
 
     /**
      * Reverse the migrations.

@@ -220,7 +220,10 @@ var carne=0;
 var sob=0;
 
 
-function queryPrice(id){
+function queryPrice(id,nome,preco){
+
+    localStorage.setItem("name", nome );
+    localStorage.setItem("preco", preco );
     
     if (id=="p1"){
         peixe=20;
@@ -336,3 +339,41 @@ function querySaldo(){
     p=p-tl;
     document.getElementById("sald").textContent="Saldo Atual: "+p;
 }
+
+function addPoduct(){
+
+        let name = document.getElementById(onclick).value;
+
+        if (id>0 & id<5){
+            let price = document.getElementById(id).peixe;
+        }
+        if (id>6 & id<10){
+            let price = document.getElementById(id).carne;
+        }
+        if (id>11 & id<15){
+            let price = document.getElementById(id).sob;
+        }
+        
+    
+        console.log(name, price);
+        
+    
+       fetch('http://127.0.0.1:8000/api/createProduct', {
+           method: 'POST',
+           headers: {
+           'Accept': 'application/json',
+           'Content-type': 'application/json',
+           },
+           body: JSON.stringify({
+            name:name,
+            price:price, 
+           })
+       }).then(response => response.json())
+       .then((responseJson) => checkConta(responseJson));
+    }
+
+    function saveInfo(nome,preco){
+
+     
+
+    }
