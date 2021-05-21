@@ -134,5 +134,39 @@ class UserController extends Controller
            
       
     }
+
+    public function buyProduct(Request $request){
+        $this->validate($request, [
+            'id' => 'required',
+            'quantity' => 'required'
+
+
+           
+        ]);
+
+        try{
+            $user = Auth::user();
+            if($user->tipoConta=="Vendor" || $user->tipoConta=="Client" )
+            {
+                $product = new Product;
+                $product->name = $request->name;
+                $product->price = $request->price;
+                $product->description = $request->description;
+                $product->save();
+                 return response()->json(['product' => $product, 'message' => 'CREATED'], 201);
+            }
+            else{
+                return response()->json(['product' => $product, 'message' => 'Conta Inválida'], 201);
+            }
+            
+           
+
+           
+        }
+        catch (\Exception $e){
+            return response()->json(['message' => 'Product Creation Failed!'], 409);
+        }
+        }
+
 }
 

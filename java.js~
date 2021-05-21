@@ -91,7 +91,7 @@ function CreateConta(){
             name:name,
            email: email,
            password: password,
-           password_confirmation: passwordConfirmed,
+           passwordConfirmed: passwordConfirmed,
            tipoConta: tipoConta,
            saldo: saldo
        })
@@ -220,10 +220,7 @@ var carne=0;
 var sob=0;
 
 
-function queryPrice(id,nome,preco){
-
-    localStorage.setItem("name", nome );
-    localStorage.setItem("preco", preco );
+function queryPrice(id){
     
     if (id=="p1"){
         peixe=20;
@@ -339,26 +336,3 @@ function querySaldo(){
     p=p-tl;
     document.getElementById("sald").textContent="Saldo Atual: "+p;
 }
-
-function addPoduct(){
-
-        let name = localStorage.getItem("name");
-        let preco = localStorage.getItem("preco");
-        console.log(name,preco);
-        
-    
-       fetch('http://127.0.0.1:8000/api/buyProduct', {
-           method: 'POST',
-           headers: {
-           'Accept': 'application/json',
-           'Content-type': 'application/json',
-           },
-           body: JSON.stringify({
-            name:name,
-            preco:preco, 
-           })
-       }).then(response => response.json())
-       .then((responseJson) => checkConta(responseJson));
-    }
-
- 
