@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->double('saldo');
             $table->string('pergunta');
-            $table->string('responta');
+            $table->string('resposta');
             $table->timestamps();
         }); 
     }

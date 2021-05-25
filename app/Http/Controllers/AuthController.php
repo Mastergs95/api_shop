@@ -22,7 +22,7 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'tipoConta' => 'required|string',
-            'password' => 'required|confirmed',
+            'password' => 'required',
             'saldo' => 'required',
             'pergunta' => 'required|string',
             'resposta' => 'required|string',
@@ -39,15 +39,14 @@ class AuthController extends Controller
             $user->password = app('hash')->make($plainPassword);
             $user->pergunta = $request->pergunta;
             $user->resposta = $request->resposta;
-
             $user->save();
-
+            
             //return successful response
              return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
 
         } catch (\Exception $e) {
             //return error message
-            return response()->json(['message' => 'User Registration Failed!'], 409);
+            return response()->json(['message' => $e], 500);
         }
 
     }

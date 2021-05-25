@@ -17,6 +17,10 @@ function createAccount() {
 
 }
 
+
+
+   
+
 var formersal;
 
 function now()
@@ -77,12 +81,12 @@ function CreateConta(){
     let passwordConfirmed = document.getElementById("passwordConfirmed").value;
     let tipoConta = document.getElementById("tipoConta").value;
     let saldo = document.getElementById("Saldo").value;
-    let pergunta = document.getElementById("pergunta").value;
-    let resposta = document.getElementById("perguntaSeguranca");
+    let pergunta = document.getElementById("pergunta").textContent;
+    let resposta = document.getElementById("perguntaSeguranca").value;
 
     console.log(name, email, passwordConfirmed, password, tipoConta,saldo);
     
-
+    console.log(name + " " + email + " " + password + " " + tipoConta + " " + saldo + " " + pergunta + " " + resposta);
    fetch('http://127.0.0.1:8000/api/register', {
        method: 'POST',
        headers: {
@@ -93,11 +97,10 @@ function CreateConta(){
             name:name,
            email: email,
            password: password,
-           password_confirmation: passwordConfirmed,
            tipoConta: tipoConta,
            saldo: saldo,
-	   pergunta: pergunta,
-	   resposta: resposta
+            pergunta: pergunta,
+            resposta: resposta
        })
    }).then(response => response.json())
    .then((responseJson) => checkConta(responseJson));
@@ -151,6 +154,8 @@ function checkConta(response){
         alert("Resgisto Inválido")
     }
 }
+
+
 function login(){
 
     let email = document.getElementById("email").value;
@@ -285,6 +290,7 @@ function queryPrice(id,nome,preco){
         sob=3,75;
         document.getElementById("pp2").textContent="Sobremesa escolhida: "+document.getElementById("p15").textContent;
     }
+    
 }
 
 
@@ -344,11 +350,12 @@ function querySaldo(){
     document.getElementById("sald").textContent="Saldo Atual: "+p;
 }
 
-function addPoduct(){
+function addProduct(){
 
         let name = localStorage.getItem("name");
         let preco = localStorage.getItem("preco");
-        console.log(name,preco);
+        let qnt = getElementById("actnum").textContent;
+        console.log(name,preco,qnt);
         
     
        fetch('http://127.0.0.1:8000/api/buyProduct', {
@@ -360,6 +367,7 @@ function addPoduct(){
            body: JSON.stringify({
             name:name,
             preco:preco, 
+            qnt:qnt,
            })
        }).then(response => response.json())
        .then((responseJson) => checkConta(responseJson));
