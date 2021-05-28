@@ -7,12 +7,13 @@
     <script src="java.js"></script>
     <title>Restaurante</title>
   </head>
-  <body onLoad="load()">
-    <nav>
+  <body onload="profile()">
+    <nav >
         <img class="logo" href="main.html" src="logo.png" width="75" height="75"></a>
         <a class="navText" href="main.html">Página Principal </a>
         <a class="navText" href="rest.html">Restaurante  </a>
         <a class="navText" href="info.html">Contacte-nos</a>
+        <a class="navText" id="user" onclick="showProfile()"></a>
       <input id="logout" type="submit" onclick="logOut()" value="Sair">
     </nav>
 
@@ -127,14 +128,35 @@
             
           </div>
           <br>
-          <button type="submit" class="btn" onClick="addProduct()">Confirmar</button>
+          <button type="submit" class="btn" onclick="addProduct()">Confirmar</button>
           <button type="button" class="btn cancel">Cancelar</button>
           
         </div>
       
       </div>
 
+      <form action="/action_page.php" id="form">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value=""><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value=""><br><br>
+        <label for="fname">Password:</label><br>
+        <input type="text" id="pass" name="fname" value=""><br>
+        <label for="fname">Tipo Conta:</label><br>
+        <input type="text" id="conta" name="fname" value=""><br>
+        <label for="fname">Pergunta de Segurança:</label><br>
+        <input type="text" id="per" name="fname" value=""><br>
+        <label for="fname">Resposta de segurança:</label><br>
+        <input type="text" id="res" name="fname" value=""><br>
+        <label for="fname">Saldo:</label><br>
+        <input type="text" id="sal" name="fname" value="€"><br>
+      </form> 
 
+
+
+     
+    
+    </div>
 
 <div class="fatura-container">
   

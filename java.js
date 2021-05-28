@@ -71,6 +71,35 @@ function openQiosk(){
     }
   }
 
+  function varform(){
+
+  
+    // Get the modal
+    var form = document.getElementById("form");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      form.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      form.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
 
 function CreateConta(){
 
@@ -115,9 +144,11 @@ function numchecker()
     formersal = document.getElementById("Saldo").value;
 }
 
-function load()
+function profile()
 {
+    console.log("teste");
     formersal = null;
+    getUser();
 }
 
 function numchecker1()
@@ -137,7 +168,7 @@ function checkLogin(response){
     console.log(String(response.token).length);
     if (String(response.token).length > 30){
 
-       
+       localStorage.setItem("token",response.token);
         window.location.replace("main.html")
 
     }else{
@@ -351,10 +382,10 @@ function querySaldo(){
 }
 
 function addProduct(){
-
+        let token= localStorage.getItem("token");
         let name = localStorage.getItem("name");
         let preco = localStorage.getItem("preco");
-        let qnt = getElementById("actnum").textContent;
+        let qnt = document.getElementById("actnum").value;
         console.log(name,preco,qnt);
         
     
@@ -363,6 +394,7 @@ function addProduct(){
            headers: {
            'Accept': 'application/json',
            'Content-type': 'application/json',
+           'Authorization': 'Bearer '+ token,
            },
            body: JSON.stringify({
             name:name,
@@ -370,7 +402,54 @@ function addProduct(){
             qnt:qnt,
            })
        }).then(response => response.json())
-       .then((responseJson) => checkConta(responseJson));
+       .then((responseJson) => console.log(responseJson));
+    }
+
+    function getUser(){
+    
+        let token= localStorage.getItem("token");
+
+       fetch('http://127.0.0.1:8000/api/profile', {
+           method: 'GET',
+           headers: {
+           'Accept': 'application/json',
+           'Content-type': 'application/json',
+           'Authorization': 'Bearer '+ token,
+           },
+           
+       }).then(response => response.json())
+       .then((responseJson) => checkUser(responseJson));
+      
+    }
+
+    function checkUser(response){
+    
+        document.getElementById("user").innerHTML= response.user.name;
+        document.getElementById("fname").value= response.user.name;
+        document.getElementById("lname").value= response.user.email;
+        document.getElementById("pass").value= response.user.password;
+        document.getElementById("conta").value= response.user.tipoConta;
+        document.getElementById("per").value= response.user.pergunta;
+        document.getElementById("res").value= response.user.resposta;
+        document.getElementById("sal").value= response.user.saldo;
+        console.log(response.user.name);
+    }
+
+    var l=true;
+    function showProfile(){
+        
+        var form = document.getElementById("form");
+        if(l==true){
+            
+        form.style.display = "block";
+        l=false;
+        } else{
+            form.style.display = "none";
+            l=true;
+        }
+      
+        
+       
     }
 
  

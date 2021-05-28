@@ -92,56 +92,14 @@ class UserController extends Controller
         }
     }
 
-
-
-
-    public function buyProduct(Request $request){
-        $this->validate($request, [
-            'id' => 'required',
-            'quantity' => 'required'
-        ]);
-        
-        try{
-            
-            $product=Product::where('id',$request->id)->first();
-            $user=Auth:: user();
-            
-            if($user->tipoConta=="Client" ||$user->tipoConta=="Vendor"  )
-            {
-                
-                if($product->stock >= $request->quantity && $user->saldo>=($product->price*$request->quantity)){
-                    
-                    $product->decrement('stock', $request->quantity);
-                    $user->saldo-= $product->price*$request->quantity;
-                }
-                
-                
-                
-                return response()->json(['product' => $product, 'message' => 'Product bought',$user->saldo], 201);
-
-            } else{
-                return response()->json(['product' => $product, 'message' => 'Conta Inválida'], 201);
-            }
-                 
-        }
-        catch (\Exception $e){
-            return response()->json(['message' => 'Product buy Failed!'], 409);
-        }
-           
-            
-           
-
-           
-      
-    }
+    
 
     public function buyProduct(Request $request){
         $this->validate($request, [
-            'id' => 'required',
-            'quantity' => 'required'
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
 
-
-           
         ]);
 
         try{
@@ -151,7 +109,8 @@ class UserController extends Controller
                 $product = new Product;
                 $product->name = $request->name;
                 $product->price = $request->price;
-                $product->description = $request->description;
+                $product->quantity = $request->quantity;
+                
                 $product->save();
                  return response()->json(['product' => $product, 'message' => 'CREATED'], 201);
             }
@@ -164,7 +123,7 @@ class UserController extends Controller
            
         }
         catch (\Exception $e){
-            return response()->json(['message' => 'Product Creation Failed!'], 409);
+            return response()->json(['message' => 'Product Creation Failed!'.$e], 409);
         }
         }
 
